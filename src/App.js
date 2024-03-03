@@ -1,15 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import WeatherWidget from './components/weather/WeatherWidget';
+import NewsFeed from './components/news/NewsFeed';
+import TaskManager from './components/tasks/TasksManager';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Personal Dashboard Application
-        </p>
-      </header>
+    <div className="container">
+      <div className="top-row">
+        <div className="weather">
+          <WeatherWidget />
+        </div>
+        <div className="news">
+          <NewsFeed />
+        </div>
+      </div>
+      <div className="tasks">
+        <TaskManager />
+      </div>
     </div>
   );
 }

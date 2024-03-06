@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import './WeatherWidget.css';
 
 import cloudIcon from "../../assets/cloud.png";
@@ -12,22 +13,51 @@ function WeatherWidget() {
 
     const cityInputFieldElement = document.getElementsByClassName("cityInput");
     const weatherTemperatureElement = document.getElementsByClassName("weatherTemperature");
-    const weatherLocationElement = document.getElementsByClassName("weatherLocation");
+    const weatherTemperatureMBElement = document.getElementsByClassName("weatherTemperatureMB");
+    const weatherLocationMBElement = document.getElementsByClassName("weatherLocationMB");
     const weatherIconElement = document.getElementsByClassName("weatherIcon");
+
+    let latitude = null;
+    let longitude = null;
+
+    useEffect(() => {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(function (position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            searchFunction();
+          });
+        } else {
+          console.log("Geolocation is not available in your browser.");
+        }
+      }, []);
 
     const searchFunction = async() => {
         
-        if (cityInputFieldElement[0].value === "") {
+        if (cityInputFieldElement[0].value === "" && latitude === null && longitude === null) {
             return 0;
         }
 
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInputFieldElement[0].value}&units=Metric&appid=${apiKey}`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?units=Metric&appid=${apiKey}&`;
+
+        if (cityInputFieldElement[0].value !== "") {
+            url = url + `q=${cityInputFieldElement[0].value}`
+        } else {
+            url = url + `lat=${latitude}&lon=${longitude}`;
+        }
 
         let response = await fetch(url);
         let data = await response.json();
 
-        weatherTemperatureElement[0].innerHTML = data.main.temp;
-        weatherLocationElement[0].innerHTML = data.name;
+        if (weatherTemperatureElement !== "") {
+            weatherTemperatureElement[0].innerHTML = data.main.temp + "° | " + data.name;
+        }
+        if (weatherTemperatureMBElement !== "") {
+            weatherTemperatureMBElement[0].innerHTML = data.main.temp + "°";
+        }
+        if (weatherLocationMBElement !== "") {
+            weatherLocationMBElement[0].innerHTML = data.name;
+        }
 
         if (data.weather[0].icon === "02d" || data.weather[0].icon === "02n" || 
         data.weather[0].icon === "03d" || data.weather[0].icon === "03n" || 
@@ -52,13 +82,22 @@ function WeatherWidget() {
                 <img src={searchIcon} alt="searchIcon"/>
             </div>
         </div>
-        <div className="weatherIconSection">
-            <img className="weatherIcon" src={sunIcon} alt="clearIcon"/>
-            <div>
-                <div className="weatherTemperature">24°</div>
+
+        <div className="desktop-content">
+            <div className="weatherIconSection">
+                <img className="weatherIcon" src={sunIcon} alt="clearIcon"/>
+                <div className="weatherTemperature">24° | London</div>
             </div>
-            <div>
-                <div className="weatherLocation">London</div>
+        </div>
+        <div className="mobile-content">
+            <div className="weatherIconSectionMB">
+                <img className="weatherIconMB" src={sunIcon} alt="clearIcon"/>
+                <div>
+                    <div className="weatherTemperatureMB">24°</div>
+                </div>
+                <div>
+                    <div className="weatherLocationMB">London</div>
+                </div>
             </div>
         </div>
         

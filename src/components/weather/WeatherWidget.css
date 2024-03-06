@@ -1,4 +1,55 @@
 
+.mobile-content {
+    display: none; 
+}
+.desktop-content {
+    display: block; 
+}
+
+.weatherIconSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+}
+
+.weatherIcon {
+    max-width: 80%; 
+}
+
+.weatherTemperature {
+    margin-top: 5px; 
+}
+
+.weatherIconSectionMB {
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 5%;
+}
+.weatherIconSectionMB img {
+    width: 30%;
+    height: auto;
+}
+.weatherTemperatureMB {
+    font-size: 30px;
+    font-weight: 400;
+}
+.weatherLocationMB {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+    .mobile-content {
+        display: block;
+    }
+    .desktop-content {
+        display: none; 
+    }
+}
+
 .searchSection, .search, .weatherIconSection, 
 .weatherTemperature, .weatherLocation {
     display: flex;
@@ -25,22 +76,3 @@
     align-items: center;
 }
 
-.weatherIconSection {
-    margin-top: 1%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-right: 5%;
-}
-.weatherIconSection img {
-    width: 30%;
-    height: auto;
-}
-.weatherTemperature {
-    font-size: 30px;
-    font-weight: 400;
-}
-.weatherLocation{
-    font-size: 15px;
-    font-weight: 400;
-}

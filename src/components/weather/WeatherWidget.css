@@ -1,0 +1,46 @@
+
+.searchSection, .search, .weatherIconSection, 
+.weatherTemperature, .weatherLocation {
+    display: flex;
+    justify-content: center;
+}
+
+.searchSection{
+    gap: 3%;
+}
+.searchSection input {
+    display: flex;
+    width: 80%;
+    height: 30px;
+    background-color:beige;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 2% 2% 2% 5%;
+    color: #626262;
+    font-size: 17px;
+    font-weight: 400;
+}
+.search {
+    align-items: center;
+}
+
+.weatherIconSection {
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 5%;
+}
+.weatherIconSection img {
+    width: 30%;
+    height: auto;
+}
+.weatherTemperature {
+    font-size: 30px;
+    font-weight: 400;
+}
+.weatherLocation{
+    font-size: 15px;
+    font-weight: 400;
+}

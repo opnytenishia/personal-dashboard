@@ -12,7 +12,7 @@ body {
   flex-wrap: wrap;
 }
 .weather, .news, .tasks {
-  padding: 2%;
+  padding: 1%;
   border: 2px solid black;
   border-radius: 20px;
   flex-grow: 1;
@@ -37,5 +37,10 @@ body {
   .weather, .news {
     margin-right: 0;
     flex-basis: 100%;
+  }
+}
+@media (min-width: 600px) {
+  .weather {
+    flex-basis: 7%;
   }
 }

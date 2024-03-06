@@ -11,10 +11,6 @@ function NewsFeed() {
     const [newsCategory, setNewsCategory] = useState("");
     const [activeMenuItem, setActiveMenuItem] = useState("");
 
-    useEffect(() => {
-      getNewsHeadLines();
-    }, [newsCategory]);
-
     const getNewsHeadLines = async() => {
       const url = `https://newsapi.org/v2/top-headlines?country=${newsCountry}&category=${newsCategory}&apiKey=${apiKey}&pageSize=${newsCount}`;
 
@@ -27,6 +23,11 @@ function NewsFeed() {
       );
     }
 
+    useEffect(() => {
+      getNewsHeadLines();
+    }, [newsCategory]);
+
+
     const handleCategoryClick = (category) => {
       setNewsCategory(category);
       setActiveMenuItem(category);
@@ -36,13 +37,13 @@ function NewsFeed() {
     <div className="container">
       <div className="menu">
         <ul>
-          <li><a href="#" className={activeMenuItem === 'business' ? 'active' : ''} onClick={() => handleCategoryClick('business')}>Business</a></li>
-          <li><a href="#" className={activeMenuItem === 'entertainment' ? 'active' : ''} onClick={() => handleCategoryClick('entertainment')}>Entertainment</a></li>
-          <li><a href="#" className={activeMenuItem === 'general' ? 'active' : ''} onClick={() => handleCategoryClick('general')}>General</a></li>
-          <li><a href="#" className={activeMenuItem === 'health' ? 'active' : ''} onClick={() => handleCategoryClick('health')}>Health</a></li>
-          <li><a href="#" className={activeMenuItem === 'science' ? 'active' : ''} onClick={() => handleCategoryClick('science')}>Science</a></li>
-          <li><a href="#" className={activeMenuItem === 'sports' ? 'active' : ''} onClick={() => handleCategoryClick('sports')}>Sports</a></li>
-          <li><a href="#" className={activeMenuItem === 'technology' ? 'active' : ''} onClick={() => handleCategoryClick('technology')}>Technology</a></li>
+          <li><p className={activeMenuItem === 'business' ? 'active' : ''} onClick={() => handleCategoryClick('business')}>Business</p></li>
+          <li><p className={activeMenuItem === 'entertainment' ? 'active' : ''} onClick={() => handleCategoryClick('entertainment')}>Entertainment</p></li>
+          <li><p className={activeMenuItem === 'general' ? 'active' : ''} onClick={() => handleCategoryClick('general')}>General</p></li>
+          <li><p className={activeMenuItem === 'health' ? 'active' : ''} onClick={() => handleCategoryClick('health')}>Health</p></li>
+          <li><p className={activeMenuItem === 'science' ? 'active' : ''} onClick={() => handleCategoryClick('science')}>Science</p></li>
+          <li><p className={activeMenuItem === 'sports' ? 'active' : ''} onClick={() => handleCategoryClick('sports')}>Sports</p></li>
+          <li><p href="" className={activeMenuItem === 'technology' ? 'active' : ''} onClick={() => handleCategoryClick('technology')}>Technology</p></li>
         </ul>
       </div>
 

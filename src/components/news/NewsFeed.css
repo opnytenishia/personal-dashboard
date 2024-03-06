@@ -10,19 +10,20 @@
     position: absolute;
     top: 0;
     left: 0;
-    line-height: 1.7;
+    line-height: 0px;
   }
   .menu ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
-  .menu ul li a{
-    padding: 5%;
+  .menu ul li p{
+    padding: 13%;
     color: #333;
     text-decoration: none;
+    margin: 0;
   }
-  .menu ul li a.active {
+  .menu ul li p.active {
     background-color: #333;
     color: white;
   }

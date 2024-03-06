@@ -6,10 +6,12 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  height: 500px;
 }
 .top-row {
   display: flex;
   flex-wrap: wrap;
+  height: 50%;
 }
 .weather, .news, .tasks {
   padding: 1%;
@@ -20,23 +22,33 @@ body {
 }
 .weather {
   flex-grow: 1;
+  width: 35%;
+  height: 80%;
   order: 1;
   margin-right: 1%;
 }
 .news {
   flex-grow: 3;
+  width: 65%;
+  height: 80%;
   order: 2;
 }
 .tasks {
   flex-grow: 3;
 }
 @media (max-width: 600px) {
-  .top-row {
-    flex-direction: column;
-  }
   .weather, .news {
+    width: 100%;
     margin-right: 0;
-    flex-basis: 100%;
+  }
+  .weather {
+    height: 180px;
+  }
+  .news {
+    height: 200px;
+  }
+  .tasks {
+    margin-top: 31%;
   }
 }
 @media (min-width: 600px) {

@@ -48,18 +48,21 @@ function NewsFeed() {
       </div>
 
       <div className="card-container">
-        {newsHeadlines.map((news, index) => (
-          <div className="card" key={index}>
-            <h4 className="headline">{news.title.split('-')[0]}</h4>
-            <p className="details">
-              Published: {news.publishedAt} 
-              <span className="separator">|</span> 
-              Author: {news.author}
-              <span className="separator">|</span>
-              <a href={news.url} className="details" target="_blank">Read more</a>
-              </p>
-          </div>
-        ))}
+        {newsHeadlines && newsHeadlines.length > 0 ? (
+           newsHeadlines.map((news, index) => (
+            <div className="card" key={index}>
+              <h4 className="headline">{news.title.split('-')[0]}</h4>
+              <p className="details">
+                Published: {news.publishedAt} 
+                <span className="separator">|</span> 
+                Author: {news.author}
+                <span className="separator">|</span>
+                <a href={news.url} className="details" target="_blank">Read more</a>
+                </p>
+            </div>
+          ))) : (
+            <p>No News Loaded!</p>
+          )}
       </div>
     </div>
   );

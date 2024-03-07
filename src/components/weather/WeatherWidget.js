@@ -20,6 +20,7 @@ function WeatherWidget() {
     let latitude = null;
     let longitude = null;
 
+    // To get user's current location 
     useEffect(() => {
         if ("geolocation" in navigator) {
           navigator.geolocation.getCurrentPosition(function (position) {
@@ -32,6 +33,7 @@ function WeatherWidget() {
         }
       }, []);
 
+    // Loading weather data based on user's current location or user entered city
     const searchFunction = async() => {
         
         if (cityInputFieldElement[0].value === "" && latitude === null && longitude === null) {

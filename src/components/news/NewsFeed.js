@@ -11,6 +11,7 @@ function NewsFeed() {
     const [newsCategory, setNewsCategory] = useState("");
     const [activeMenuItem, setActiveMenuItem] = useState("");
 
+    // Method to load news headline from Endpoint
     const getNewsHeadLines = async() => {
       const url = `https://newsapi.org/v2/top-headlines?country=${newsCountry}&category=${newsCategory}&apiKey=${apiKey}&pageSize=${newsCount}`;
 
@@ -28,6 +29,7 @@ function NewsFeed() {
     }, [newsCategory]);
 
 
+    // To update user selected category and reload news
     const handleCategoryClick = (category) => {
       setNewsCategory(category);
       setActiveMenuItem(category);

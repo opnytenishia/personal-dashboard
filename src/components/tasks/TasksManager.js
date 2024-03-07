@@ -11,6 +11,7 @@ function App() {
     const [day, setDay] = useState('');
     const [completed, setCompleted] = useState(false);
     
+    // To load added tasks
     const getTasks = JSON.parse(localStorage.getItem("taskAdded"));
     useEffect(() => {
         if (getTasks == null) {
@@ -20,6 +21,7 @@ function App() {
         }
     }, [])
 
+    //to handle add task form validation
     const onSubmit = (e) => {
         e.preventDefault();
         if (!text && !day) {
@@ -47,6 +49,7 @@ function App() {
         setDay('');
     }
     
+    //To Save task and ass to storage
     const addTask = (task) => {
         const id = uuidv4();
         const newTask = { id, ...task }
@@ -59,6 +62,7 @@ function App() {
         localStorage.setItem("taskAdded", JSON.stringify([...tasks, newTask]));
     }
     
+    // To delete task from storage
     const deleteTask = (id) => {
         const deleteTask = tasks.filter((task) => task.id !== id);
         setTasks(deleteTask);
@@ -70,6 +74,7 @@ function App() {
         localStorage.setItem("taskAdded", JSON.stringify(deleteTask));
     }
     
+    // To handle task update as completed
     const toggleCompleted = (id) => {
         const updatedTasks = tasks.map(task => {
             if (task.id === id) {

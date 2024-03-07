@@ -1,0 +1,13 @@
+.formInput {
+    padding: 1%;
+    margin: 1%;
+}
+
+.task-table {
+    border: 2px solid black;
+}
+
+.tableCell {
+    border-top: 2px solid black;
+    text-align: center;
+}
